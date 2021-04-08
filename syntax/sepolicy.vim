@@ -16,7 +16,7 @@ syn keyword macro __unix_socket_connect__ add_hwservice add_service app_domain b
 hi Boolean term=bold  cterm=bold ctermfg=brown  gui=bold  guifg=#ffff60
 hi Todo term=bold  cterm=bold ctermfg=yellow  gui=bold  guifg=#ffff60
 
-syn region label start=/\v\bu:/ end=/\v:s0/ contains=todo
+syn region label start=/\vu:/ skip=/\v\\./ end=/\v:s0/
 
 hi def link def        Keyword
 hi def link macro      Keyword
