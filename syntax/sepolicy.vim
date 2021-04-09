@@ -20,5 +20,6 @@ syn region label start=/\vu:/ skip=/\v\\./ end=/\v:s0/
 
 hi def link def        Keyword
 hi def link macro      Keyword
+hi def link label      Type
 
 let b:current_syntax = 'sepolicy'
