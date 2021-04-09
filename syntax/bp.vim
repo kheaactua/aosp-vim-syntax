@@ -7,7 +7,7 @@ if exists('b:current_syntax')
   finish
 endif
 
-source <sfile>:p:h/bzl.vim
+source $VIMRUNTIME/syntax/bzl.vim
 
 syn keyword aidlPkg aidl_interface aidl_interfaces_metadata aidl_mapping
 
