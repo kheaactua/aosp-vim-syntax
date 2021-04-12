@@ -13,11 +13,11 @@ syn region ruleDomain start=/[a-zA-Z]/ end=/\s/ containedin=ruleLine nextgroup=r
 syn keyword rule type allow neverallow type_transition containedin=ruleLine nextgroup=ruleDomain
 
 
-syn keyword class dir file sock_file unix_dgram_socket process capability containedin=ruleClass contained
+syn keyword class key fd dir file fifo_file sock_file unix_dgram_socket unix_stream_socket process capability containedin=ruleClass lnk_file chr_file contained
 
 " Technically I should go through the docs and apply specific permissions to
 " each attribute type, but that's a lot of work
-syn keyword perms read dsprivlogcap rmdir add_name search write remove_name open getattr open sendto add_name setuid setgid setattr unlink execute create lock ioctl append rename transition siginh noatsecure rlimitinh containedin=ruleLineBracedAttrs,ruleLineSingleAttrs contained
+syn keyword perms read dsprivlogcap rmdir add_name search write remove_name open getattr open sendto add_name setuid setgid setattr rw_file_perms unlink unpriv_binder_ioctls r_dir_perms r_file_perms execute audit_access create lock ioctl append rename transition siginh noatsecure rlimitinh use sigchld fork sigkill sigstop signull signal getsched setsched getsession getpgid setpgid getcap setcap setrlimit containedin=ruleLineBracedAttrs,ruleLineSingleAttrs contained
 
 syn region label start=/u:/ end=/:s0/
 
