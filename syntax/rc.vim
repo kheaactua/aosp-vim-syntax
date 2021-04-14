@@ -2,9 +2,6 @@
 " Language: Android Init Language
 " Maintainer: Chris McClellan
 
-if exists("b:current_syntax")
-  finish
-endif
 
 syn match rcComment '#.*'
 syn keyword rcImport import
@@ -12,7 +9,7 @@ syn keyword rcKeyword on
                     \ service
 
 "Options are service modifiers
-syn keyword rcOption 
+syn keyword rcOption
                     \ critical
                     \ disabled
                     \ setenv
@@ -26,7 +23,7 @@ syn keyword rcOption
                     \ writepid
                     \ priority
                     \ namespace
-                    \ oom_score_adjust 
+                    \ oom_score_adjust
                     \ shutdown
 
 " THese are common in file paths and as parts of other names
@@ -46,7 +43,7 @@ syn match rcOption /\smemcg.limit_in_bytes\s/
 " discovered by grepping init.rc for the word trigger
 " keywords struggle with non-alph characters, so we match instead
 syn match rcTrigger /\scharger[\s\n]/
-syn match rcTrigger /\sinit[\s\n]/ 
+syn match rcTrigger /\sinit[\s\n]/
 syn match rcTrigger /\searly-init[\s\n]/
 syn match rcTrigger /\slate-init[\s\n]/
 syn match rcTrigger /\searly-fs[\s\n]/
@@ -84,9 +81,9 @@ syn keyword rcCommand
                     \ loglevel
                     \ mkdir
                     \ mount_all
-                    \ mount 
+                    \ mount
                     \ restart
-                    \ restorecon 
+                    \ restorecon
                     \ restorecon_recursive
                     \ rm
                     \ rmdir
@@ -111,7 +108,7 @@ syn match rcCommand /\senable[\s\n]/
 syn match rcCommand /\sstart\s/
 syn match rcCommand /\swrite\s/
 
-" Order matters here. 
+" Order matters here.
 " We must declatre the identifier region after the operators in order to get the identifier highlight.
 " The matchgroup allows the operators to not be over-riden by the region while still allowing the end match.
 syn match rcInterpolator '${'
