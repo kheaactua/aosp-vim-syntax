@@ -39,6 +39,7 @@ syn keyword class contained key fd dir file fifo_file sock_file unix_dgram_socke
 
 " Technically I should go through the docs and apply specific permissions to
 " each attribute type, but that's a lot of work
+" A better AOSP way to do this would be to review files such as system/sepolicy/private/access_vectors
 syn keyword perm read dsprivlogcap rmdir add_name search write remove_name open getattr open sendto add_name setuid setgid setattr rw_file_perms unlink unpriv_binder_ioctls r_dir_perms r_file_perms execute audit_access create lock ioctl append rename transition siginh noatsecure rlimitinh use sigchld fork sigkill sigstop signull signal getsched setsched getsession getpgid setpgid getcap setcap setrlimit containedin=rulePerm
 
 syn region label start=/u:/ end=/:s0/
