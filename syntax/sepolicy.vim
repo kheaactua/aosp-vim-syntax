@@ -35,7 +35,7 @@ syn region ruleDomain  contained matchgroup="block" start="{" end="}" containedi
 
 syn keyword ruleStart contained type allow neverallow type_transition allowxperm dontaudit containedin=ruleLine nextgroup=ruleDomain
 
-syn keyword class contained key fd dir file fifo_file sock_file unix_dgram_socket unix_stream_socket process capability lnk_file chr_file containedin=ruleClass
+syn keyword class contained key fd dir file fifo_file sock_file unix_dgram_socket unix_stream_socket process capability lnk_file chr_file hwservice_manager containedin=ruleClass
 
 " Technically I should go through the docs and apply specific permissions to
 " each attribute type, but that's a lot of work
