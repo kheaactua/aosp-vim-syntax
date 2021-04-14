@@ -4,9 +4,15 @@ endif
 
 syn region comment start=/#/ end=/$/ oneline
 
+" Defines that aren't handled by other rules (like typeLine and ruleLine)
 syn keyword def define_prop
 
 syn region stringLiteral start="`" skip="`" end="'" contains=ruleLine
+
+syn region  typeLine start=/^\s*type/ end=";"
+syn keyword knownTypeAttrs contained domain coredomain exec_type file_type vendor_init system_file_type containedin=typeLine
+syn match   typeDomain     contained /[a-zA-Z_]\+/ containedin=typeLine skipwhite
+syn keyword typeStart      contained type containedin=typeLine nextgroup=typeDomain
 
 syn region ruleLine start=/^\s*allow/ end=";"
 syn region ruleLine start=/^\s*neverallow/ end=";"
@@ -23,8 +29,8 @@ syn region ruleClass contained matchgroup="block" start=":\s*{" end="}" containe
 syn region ruleType contained start=/[a-zA-Z]/ end=/\w\s*:\@=/ containedin=ruleLine nextgroup=ruleClass
 
 syn match  ruleMDomain contained /-[a-zA-Z_]\+/ containedin=ruleDomain skipwhite
-syn match  ruleDomain contained /[a-zA-Z_]\+/ containedin=ruleLine skipwhite nextgroup=ruleType
-syn region ruleDomain contained matchgroup="block" start="{" end="}" containedin=ruleLine skipwhite nextgroup=ruleType
+syn match  ruleDomain  contained /[a-zA-Z_]\+/  containedin=ruleLine skipwhite nextgroup=ruleType
+syn region ruleDomain  contained matchgroup="block" start="{" end="}" containedin=ruleLine skipwhite nextgroup=ruleType
 
 
 syn keyword ruleStart contained type allow neverallow type_transition allowxperm dontaudit containedin=ruleLine nextgroup=ruleDomain
@@ -47,14 +53,18 @@ hi rulePerm term=bold cterm=bold gui=bold
 hi ruleType term=bold cterm=bold gui=bold
 hi ruleStart term=bold cterm=bold gui=bold
 
-hi def link def           Keyword
-hi def link stringLiteral String
-hi def link ruleDomain    Structure
-hi def link ruleType      Type
-hi def link class         Type
-hi def link perm          Keyword
-hi def link macro         Macro
-hi def link label         Type
-hi def link ruleMDomain   Exception
+hi def link def             Keyword
+hi def link stringLiteral   String
+hi def link knownTypeAttrs  Keyword
+hi def link typeStart       Statement
+hi def link typeDomain      Type
+hi def link ruleStart       Statement
+hi def link ruleDomain      Structure
+hi def link ruleType        Type
+hi def link class           Type
+hi def link perm            Keyword
+hi def link macro           Macro
+hi def link label           Type
+hi def link ruleMDomain     Exception
 
 let b:current_syntax = 'sepolicy'
