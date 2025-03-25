@@ -9,8 +9,8 @@ syn match log_notice   '.*\(SLOG2_NOTICE\).*'
 syn match log_warning  '.*\(SLOG2_WARNING\).*'
 syn match log_error    '.*\(SLOG2_ERROR\).*'
 
-hi def link log_debug2      StatusLine
-hi def link log_debug1      StatusLineNC
+hi def link log_debug2      Comment
+hi def link log_debug1      Comment
 hi def link log_info        Normal
 hi def link log_notice      Title
 hi def link log_warning     WarningMsg
